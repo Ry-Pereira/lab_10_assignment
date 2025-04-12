@@ -7,3 +7,58 @@
 //Author: Ryan Antony Pereira
 //Creation Date: 4/12/2025
 //Last Modified Date: 4/12/2025
+
+//Includes the iostream library file to include standard input and ouput for cin and cout
+#include <iostream>
+//Includes the C++ fstream libary for file input and output, open and close functionality
+#include <fstream>
+//Includes the C++ sstream library for file string parsing functionality
+#include <sstream>
+//Includes the C++ vector library for vector manipulation and implementation
+#include <vector>
+//Using standard namespace to avoid using std:: prefix
+using namespace std;
+
+
+
+
+bool is_file_valid(string double_number_text_file){
+    ifstream valid_double_numbers_file(double_number_text_file);
+    if(valid_double_numbers_file.is_open(){
+        return true;
+    }
+    else{
+        valid_double_numbers_file.close();
+        return false;
+    }
+}
+
+vector<string> load_double_numbers_from_file(string double_number_text_file){
+    ifstream valid_double_numbers_file(double_number_text_file);
+    vector<string> double_numbers;
+    if 
+}
+
+
+
+int main(){
+    string double_number_text_file;
+    cout << "Enter the name of the double number text file: ";
+    cin >> double_number_text_file;
+    if(is_file_valid(double_number_text_file)){
+        cout << "The file is valid." << "\n";
+    }
+    else{
+        cout << "The file is not valid." << "\n";
+
+    }
+
+
+
+
+
+
+
+
+    return 0;
+}
