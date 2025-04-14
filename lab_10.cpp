@@ -16,6 +16,7 @@
 #include <sstream>
 //Includes the C++ vector library for vector manipulation and implementation
 #include <vector>
+#include <cmath>
 //Using standard namespace to avoid using std:: prefix
 using namespace std;
 
@@ -26,91 +27,233 @@ bool is_file_valid(string double_number_text_file){
     //Declare and initialize input file stream object name valid double number file with double number text file passed as argument
     ifstream valid_double_numbers_file(double_number_text_file);
     //If the valid double number file is able to be opened, the file is valid
-    if(valid_double_numbers_file.is_open()){
-        //Returns true if the file is opened, because it is valid
-        return true;
-    }
-    //If the valid double number file is unable to open, the file is not valid
-    else{
-        //Closes the valid double number file
-        valid_double_numbers_file.close();
-        //Returns false if the file is not opened, because the file is not valid
-        return false;
-    }
+    return valid_double_numbers_file.is_open();
 }
 
 //Function that takes in a character character and returns true or false if the character is a valid number or not
-bool is_a_valid_numeber(char character){
+bool is_a_valid_number(char character){
     //Checks if the character is a number by seeing it if equal to or bewteen 0 and 9, and returns true or false if it is a number or not
-    if(character >= 0 && character <= 9){
-        //Returns true if the character is a number
-        return true;
-    }
-    //If the characrer does not meet these conditions, its not a number
-    else{
-        //Returns false to indicate it is not a valid number
-        return false;
-    }
+    return character >= '0' && character <= '9';
 }
 
 //Function that takes in a character character and returns true or false if the character is either ., or -, or +. To indcate its either of these math operators
 bool is_a_valid_character(char character){
     //If the character is equal to .,-,+ it is not a valid math operator
-    if(character == '.' || character == '-' || character == '+'{
-        //Returns true to indicate it is a valid math operator
+    return character == '.' || character == '-' || character == '+';
+}
+
+
+
+string is_valid_double(string expression){
+
+   
+
+    if(is_a_valid_character(expression[0]) == 1 ||is_a_valid_number(expression[0]) == 1){
+        if(expression[0] == '.'){
+            if(is_a_valid_number(expression[1]) != 1){
+                return "invalid";
+            }
+            for(int index = 1;index < expression.length();index++){
+                if(expression[index] == '.'){
+                    return "invalid";
+                }
+            }
+            return "decimal";
+        }
+        if(expression[0] == '+'){
+            for(int index = 1;index < expression.length();index++){
+                if(expression[index] == '+'){
+                    return "invalid";
+                }
+            }
+            return "positive";
+        }
+        if(expression[0] == '-'){
+         for(int index = 1;index < expression.length();index++){
+                if(expression[index] == '+'){
+                    return "invalid";
+                }
+            }
+            return "negative";
+        }
+        else{
+            return "positive";
+        }
+    }
+    return "invalid";
+}
+    
+bool pot(string expression){
+    bool is_valid = true;
+    int amount_of_points = 0;
+    
+    
+    for(int index = 1;index < expression.length(); index++){
+        if(expression[index] == '-'){
+            is_valid =  false;
+        }
+        if(expression[index] == '+'){
+            is_valid =  false;
+        }
+        if(expression[index] == '.'){
+          
+            if(is_a_valid_number(expression[index+1]) != 1){
+                is_valid =  false;
+            }
+            else{
+                amount_of_points++;
+            }
+            
+        }
+        if(amount_of_points >1){
+            is_valid = false;
+        }
+    }
+    
+    if(is_valid == true){
         return true;
     }
-    //If the character does not meet these condition, its not a math operator
-    else{
-        //Returns false to indicate it is not a valid math operator
-        return false;
-    }
+    
+    cout<<"\n";
 }
 
-
-
-double parse_number(const string &expression){
-    int index = 0;
-    int expression_length = expression.length();
-    int decimal_points_found = 0;
-    double number = 0.0;
-    bool is_positive = true;
-    bool is_negative = false;
-    bool is_decimal = false;
-
-    if (expression[index] == '-'){
-        is_negative = true;
-        is_positive = false;
-        index++;
-    }
-    else if(expression[index] == '+'){
-        is_positive = true;
-        index++;
-    }
-
-    for(index;index<expression_length;index++){}{
-        if(expression[index] == '.'){
-            is_decimal = true;
-            decimal_points_found++;
-            index++;
-        }
-        if(is_decimal){
-        }
-        if(decimal_points_found > 1){
-            cout<<"Invalid double number"<<endl;
-            return 0.0;
-        }
-
-    }    
-}
-
-
-void add_parsed_number(vector<double> &double_numbers){
-    int index = 0;
+double add_it_up(string expression){
     double sum = 0.0;
-    for(index;index<double_numbers.size();index++){
-        sum = doubles_numbers[index] + -123.456;
-        cout<<"Sum of: "<<double_numbers[index]<<" + -123.456 = "<<sum<<"\n";
+    cout<<"inside"<<"\n";
+    bool is_dot_present = false;
+    for(int index = 0;index<expression.length();index++){
+        if(expression[index] == '.'){
+            is_dot_present = true;
+        }
+    }
+    if(is_dot_present == false){
+        cout<<"no dot"<<expression<<"\n";
+        return 0.0;
+    }
+    int dot1 = expression.find('.');
+    string left = expression.substr(0,dot1);
+    string right = expression.substr(dot1,expression.length());
+    cout<<"Left"<<left<<left.length()<<"\n";
+    cout<<"Rightt"<<right<<"\n";
+    
+    char sign = left[0];
+    int bet = 3;
+    for(int i = 0; i < left.length(); i++){
+        switch(left[i]){
+            case '0':
+            cout<< 0 <<left.length() - i<<"\n";
+            sum+= 0 * pow(10,left.length() - i-1);
+            break;
+            case '1':
+            cout<< 1<<left.length() - i<<"\n";
+            sum+= 1 * pow(10,left.length() - i-1);
+            break;
+            case '2':
+            cout<< 2<<"\n";
+            sum+= 2 * pow(10,left.length() - i-1);
+            break;
+            case '3':
+            cout<< 3<<"\n";
+            sum+= 3 * pow(10,left.length() - i-1);
+            break;
+            case '4':
+            cout<< 4<<"\n";
+            sum+= 4 * pow(10,left.length() - i-1);
+            break;
+            case '5':
+            cout<< 5<<"\n";
+            sum+= 5 * pow(10,left.length() - i-1);
+            break;
+            case '6':
+            cout<< 6<<"\n";
+            sum+= 6 * pow(10,left.length() - i-1);
+            break;
+            case '7':
+            cout<< 7<<"\n";
+            sum+= 7 * pow(10,left.length() - i-1);
+            break;
+            case '8':
+            cout<< 8<<"\n";
+            sum+= 8 * pow(10,left.length() - i-1);
+            break;
+            case '9':
+            cout<< 9<<"\n";
+            sum+= 9 * pow(10,left.length() - i-1);
+            break;
+        }
+        
+    }
+
+    for(int i = 0; i < right.length(); i++){
+        switch(right[i]){
+            case '0':
+            sum+= 0 / pow(10,right.length() +i-1);
+            break;
+            case '1':
+            sum+= 1 / pow(10,right.length() + i-1);
+            break;
+            case '2':
+            cout<< 2<<"\n";
+            sum+= 2/ pow(10,right.length() + i-1);
+            break;
+            case '3':
+            cout<< 3<<"\n";
+            sum+= 3 / pow(10,right.length() + i-1);
+            break;
+            case '4':
+            cout<< 4<<"\n";
+            sum+= 4 / pow(10,i);
+            break;
+            case '5':
+            cout<< 5<<"\n";
+            sum+= 5 / pow(10,right.length() + i-1);
+            break;
+            case '6':
+            cout<< 6<<"\n";
+            sum+= 6 / pow(10,right.length() + i-1);
+            break;
+            case '7':
+            cout<< 7<<"\n";
+            sum+= 7 / pow(10,right.length() + i-1);
+            break;
+            case '8':
+            cout<< 8<<"\n";
+            sum+= 8 / pow(10,right.length() + i-1);
+            break;
+            case '9':
+            cout<< 9<<"\n";
+            sum+= 9 / pow(10,right.length() + i-1);
+            break;
+        }
+        
+    }
+    
+    sum -= 100.000;
+    sum -= 20.000;
+    sum -= 3.000;
+    sum -= .400;
+    sum -= .050;
+    sum -= .006;
+    cout<<expression<<"Sum: "<<sum<<"\n";
+    
+    return 0.0;
+    
+    
+}
+
+
+void add_parsed_number(vector<string> double_numbers){
+    string sum;
+    for(int index =0;index<double_numbers.size();index++){
+        string valid_double = is_valid_double(double_numbers[index]);
+        if(valid_double != "invalid"){
+            if(pot(double_numbers[index]) == 1){
+                cout<<"W: "<<double_numbers[index]<<"\n";
+                add_it_up(double_numbers[index]);
+            }
+        }
+        
+    
     }
 }
 
@@ -121,12 +264,16 @@ vector<string> load_double_numbers_from_file(string double_number_text_file){
     ifstream valid_double_numbers_file(double_number_text_file);
     //Declare and initializes a vector of string double numbers to store the double numbers in the file
     vector<string> double_numbers;
+    
     //If the valid double number file is able to be opened
     if(valid_double_numbers_file.is_open()){
         //Declares string line to store the file line string
         string line;
         //Continously in the file, to get the lien from the file and store it in the string line
         while(getline(valid_double_numbers_file,line)){
+            if(line.size()-1 == 0){
+                continue;
+            }
             //If the line is not empty
             if(line.size() != 0){
                 //Declares and initializes a string stream object with line passed in
@@ -150,6 +297,7 @@ vector<string> load_double_numbers_from_file(string double_number_text_file){
                     while(bb >> valuer){
                         //double number pushed the value into the back of the vector double numbers
                         double_numbers.push_back(valuer);
+                }
                 }
                 //If the i is not equal to 1, then there is more than one number occupying the line, so it can't be added
                 else{
@@ -177,6 +325,8 @@ int main(){
     cout << "Welcome to the double number program" << "\n";
     cout << "This program will read a double number text file and parse the double numbers in it" << "\n";
 
+
+    
     //Prints to terminal to user to prompt for a the text file namae to be entered
     cout << "Enter the name of the double number text file: ";
     //Stores the user input in double number text file
