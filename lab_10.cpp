@@ -164,7 +164,7 @@ void add_specific_double_number(string expression){
     //Declares double type sum to 0.0
     double sum = 0.0;
     //Initialzzies the string left and right to hold the left and right part of the expression that is split by the decimal point
-    string left_double_substring_double_substring;
+    string left_double_substring;
     string right_double_substring;
 
     //Declares the integer point position to hold the integer position of the decimal point in the double number
@@ -200,7 +200,7 @@ void add_specific_double_number(string expression){
         }
     }
     //If the is dot present is true
-    if(is_dot_present == true){
+    if(is_decimal_point_present == true){
         //Decimal point position is set to the found position of the decimal point in the double number
         decimal_point_position = expression.find('.');
         //Left substring is set to the substring before the decimal point position
@@ -523,9 +523,9 @@ void add_specific_double_number(string expression){
     //Sum is decremented by .006
     sum -= .006;
     //Declares and initializes set fixed to the right double substring length + 3, to set the precision for the uput for the resutl printing format
-    int set_fixed = right_double_substring.length() + 3;
+    int set_fixed = right_double_substring.length();
     //Prints the result to terminal otput fixes, with set precsion of the result so we wount get a double number at scientific notation
-    cout<<expression<<'+'<<-123.456<<'='<<"Sum: "<<std::fixed<<setprecision(set_fixed)<<sum<<"\n";
+    cout<<expression<<" + "<<-123.456<<" = "<<std::fixed<<setprecision(set_fixed)<<sum<<"\n";
 }
 
 //Function for taking a in a vector string of doubel numbers,sees if there valid, and prints the ouput of them added with a specific double number
