@@ -17,6 +17,7 @@
 //Includes the C++ vector library for vector manipulation and implementation
 #include <vector>
 #include <cmath>
+#include <iomanip>
 //Using standard namespace to avoid using std:: prefix
 using namespace std;
 
@@ -117,13 +118,28 @@ bool pot(string expression){
     cout<<"\n";
 }
 
+
+
 double add_it_up(string expression){
     double sum = 0.0;
     string left;
     string right;
     int dot1;
-    
     bool is_dot_present = false;
+    string type;
+    
+    if(expression[0] == '+'){
+        type = "positive";
+    }
+    else if(expression[0] == '-'){
+        type = "negative";
+    }
+    else{
+        type = "positive";
+    }
+    
+    
+    
     for(int index = 0;index<expression.length();index++){
         if(expression[index] == '.'){
             is_dot_present = true;
@@ -144,42 +160,91 @@ double add_it_up(string expression){
     for(int i = 0; i < left.length(); i++){
         switch(left[i]){
             case '0':
-            sum+= 0 * pow(10,left.length() - i-1);
+            if(type == "positive"){
+                sum+= 0 * pow(10,left.length() - i-1);
+            }
+            else{
+                sum-= 0 * pow(10,left.length() - i-1);
+            }
             break;
             case '1':
-            sum+= 1 * pow(10,left.length() - i-1);
+            if(type == "positive"){
+                sum+= 1 * pow(10,left.length() - i-1);
+            }
+            else{
+                sum-= 1 * pow(10,left.length() - i-1);
+            }
             break;
             case '2':
-         
-            sum+= 2 * pow(10,left.length() - i-1);
+            if(type == "positive"){
+                sum+= 2 * pow(10,left.length() - i-1);
+            }
+            else{
+                sum-= 2 * pow(10,left.length() - i-1);
+            }
             break;
             case '3':
 
-            sum+= 3 * pow(10,left.length() - i-1);
+            if(type == "positive"){
+                sum+= 3 * pow(10,left.length() - i-1);
+            }
+            else{
+                sum-= 3 * pow(10,left.length() - i-1);
+            }
             break;
             case '4':
     
-            sum+= 4 * pow(10,left.length() - i-1);
+            if(type == "positive"){
+                sum+= 4 * pow(10,left.length() - i-1);
+            }
+            else{
+                sum-= 4 * pow(10,left.length() - i-1);
+            }
             break;
             case '5':
      
-            sum+= 5 * pow(10,left.length() - i-1);
+            if(type == "positive"){
+                sum+= 5 * pow(10,left.length() - i-1);
+            }
+            else{
+                sum-= 5 * pow(10,left.length() - i-1);
+            }
             break;
             case '6':
  
-            sum+= 6 * pow(10,left.length() - i-1);
+            if(type == "positive"){
+                sum+= 6 * pow(10,left.length() - i-1);
+            }
+            else{
+                sum-= 6 * pow(10,left.length() - i-1);
+            }
             break;
             case '7':
  
-            sum+= 7 * pow(10,left.length() - i-1);
+            if(type == "positive"){
+                sum+= 7 * pow(10,left.length() - i-1);
+            }
+            else{
+                sum-= 7 * pow(10,left.length() - i-1);
+            }
             break;
             case '8':
    
-            sum+= 8 * pow(10,left.length() - i-1);
+            if(type == "positive"){
+                sum+= 8 * pow(10,left.length() - i-1);
+            }
+            else{
+                sum-= 8 * pow(10,left.length() - i-1);
+            }
             break;
             case '9':
     
-            sum+= 9 * pow(10,left.length() - i-1);
+            if(type == "positive"){
+                sum+= 9 * pow(10,left.length() - i-1);
+            }
+            else{
+                sum-= 9 * pow(10,left.length() - i-1);
+            }
             break;
         }
         
@@ -188,42 +253,93 @@ double add_it_up(string expression){
     for(int i = 0; i < right.length(); i++){
         switch(right[i]){
             case '0':
-            sum+= 0 / pow(10,i);
+            if(type == "positive"){
+                sum+= 0 / pow(10,i);
+            }
+            else{
+                sum-= 0 / pow(10,i);
+            }
             break;
             case '1':
-            sum+= 1 / pow(10,i);
+             if(type == "positive"){
+                sum+= 1 / pow(10,i);
+            }
+            else{
+                sum-= 1 / pow(10,i);
+            }
             break;
             case '2':
         
-            sum+= 2/ pow(10,i);
+            if(type == "positive"){
+                sum+= 2 / pow(10,i);
+            }
+            else{
+                sum-= 2 / pow(10,i);
+            }
             break;
             case '3':
 
-            sum+= 3 / pow(10,i);
+            if(type == "positive"){
+                sum+= 3 / pow(10,i);
+            }
+            else{
+                sum-= 3 / pow(10,i);
+            }
             break;
             case '4':
      
-            sum+= 4 / pow(10,i);
+            if(type == "positive"){
+                sum+= 4 / pow(10,i);
+            }
+            else{
+                sum-= 4 / pow(10,i);
+            }
             break;
             case '5':
-
-            sum+= 5 / pow(10,i);
+            
+            if(type == "positive"){
+                sum+= 5 / pow(10,i);
+            }
+            else{
+                sum-= 5 / pow(10,i);
+            }
             break;
             case '6':
    
-            sum+= 6 / pow(10,i);
+            
+            if(type == "positive"){
+                sum+= 6 / pow(10,i);
+            }
+            else{
+                sum-= 6 / pow(10,i);
+            }
             break;
             case '7':
    
-            sum+= 7 / pow(10,i);
+            if(type == "positive"){
+                sum+= 7 / pow(10,i);
+            }
+            else{
+                sum-= 7 / pow(10,i);
+            }
             break;
             case '8':
        
-            sum+= 8 / pow(10,i);
+            if(type == "positive"){
+                sum+= 8 / pow(10,i);
+            }
+            else{
+                sum-= 8 / pow(10,i);
+            }
             break;
             case '9':
  
-            sum+= 9 / pow(10,i);
+            if(type == "positive"){
+                sum+= 9 / pow(10,i);
+            }
+            else{
+                sum-= 9 / pow(10,i);
+            }
             break;
         }
         
@@ -235,7 +351,8 @@ double add_it_up(string expression){
     sum -= .400;
     sum -= .050;
     sum -= .006;
-    cout<<expression<<'+'<<-123.456<<'='<<"Sum: "<<sum<<"\n";
+    int set_fixed = right.length() + 3;
+    cout<<expression<<'+'<<-123.456<<'='<<"Sum: "<<std::fixed<<setprecision(set_fixed)<<sum<<"\n";
     
     return 0.0;
     
