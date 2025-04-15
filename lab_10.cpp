@@ -126,6 +126,14 @@ bool is_valid_double_body(string expression){
     
     //Loops through the expression at each index
     for(int index = 1;index < expression.length(); index++){
+        //If expression at index 0 is a valid character or a valid number the program continues
+        if(is_a_valid_character(expression[index]) != 1 && is_a_valid_number(expression[index]) != 1){
+            //Prints to terminal that the double number is not valid
+            cout<<"Invalid double number: There is a invalid number or character"<<"\n";
+            //Returns false
+            is_valid =  false;
+        }
+        
         //If the expression at index is -, its false, it needs to show up at the first index
         if(expression[index] == '-'){
             //Is valud is set to false to indicate that the double number body invalid because a sign is in the body
