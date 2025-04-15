@@ -119,7 +119,7 @@ bool pot(string expression){
 
 double add_it_up(string expression){
     double sum = 0.0;
-    cout<<"inside"<<"\n";
+  
     bool is_dot_present = false;
     for(int index = 0;index<expression.length();index++){
         if(expression[index] == '.'){
@@ -127,25 +127,23 @@ double add_it_up(string expression){
         }
     }
     if(is_dot_present == false){
-        cout<<"no dot"<<expression<<"\n";
+    
         return 0.0;
     }
     int dot1 = expression.find('.');
     string left = expression.substr(0,dot1);
     string right = expression.substr(dot1,expression.length());
-    cout<<"Left"<<left<<left.length()<<"\n";
-    cout<<"Rightt"<<right<<"\n";
+    //cout<<"Left"<<left<<left.length()<<"\n";
+    //cout<<"Rightt"<<right<<"\n";
     
     char sign = left[0];
     int bet = 3;
     for(int i = 0; i < left.length(); i++){
         switch(left[i]){
             case '0':
-            cout<< 0 <<left.length() - i<<"\n";
             sum+= 0 * pow(10,left.length() - i-1);
             break;
             case '1':
-            cout<< 1<<left.length() - i<<"\n";
             sum+= 1 * pow(10,left.length() - i-1);
             break;
             case '2':
@@ -187,18 +185,18 @@ double add_it_up(string expression){
     for(int i = 0; i < right.length(); i++){
         switch(right[i]){
             case '0':
-            sum+= 0 / pow(10,right.length() +i-1);
+            sum+= 0 / pow(10,i);
             break;
             case '1':
-            sum+= 1 / pow(10,right.length() + i-1);
+            sum+= 1 / pow(10,i);
             break;
             case '2':
             cout<< 2<<"\n";
-            sum+= 2/ pow(10,right.length() + i-1);
+            sum+= 2/ pow(10,i);
             break;
             case '3':
             cout<< 3<<"\n";
-            sum+= 3 / pow(10,right.length() + i-1);
+            sum+= 3 / pow(10,i);
             break;
             case '4':
             cout<< 4<<"\n";
@@ -206,23 +204,23 @@ double add_it_up(string expression){
             break;
             case '5':
             cout<< 5<<"\n";
-            sum+= 5 / pow(10,right.length() + i-1);
+            sum+= 5 / pow(10,i);
             break;
             case '6':
             cout<< 6<<"\n";
-            sum+= 6 / pow(10,right.length() + i-1);
+            sum+= 6 / pow(10,i);
             break;
             case '7':
             cout<< 7<<"\n";
-            sum+= 7 / pow(10,right.length() + i-1);
+            sum+= 7 / pow(10,i);
             break;
             case '8':
             cout<< 8<<"\n";
-            sum+= 8 / pow(10,right.length() + i-1);
+            sum+= 8 / pow(10,i);
             break;
             case '9':
             cout<< 9<<"\n";
-            sum+= 9 / pow(10,right.length() + i-1);
+            sum+= 9 / pow(10,i);
             break;
         }
         
@@ -234,7 +232,7 @@ double add_it_up(string expression){
     sum -= .400;
     sum -= .050;
     sum -= .006;
-    cout<<expression<<"Sum: "<<sum<<"\n";
+    cout<<expression<<'+'<<-123.456<<'='<<"Sum: "<<sum<<"\n";
     
     return 0.0;
     
@@ -248,7 +246,7 @@ void add_parsed_number(vector<string> double_numbers){
         string valid_double = is_valid_double(double_numbers[index]);
         if(valid_double != "invalid"){
             if(pot(double_numbers[index]) == 1){
-                cout<<"W: "<<double_numbers[index]<<"\n";
+                
                 add_it_up(double_numbers[index]);
             }
         }
