@@ -96,7 +96,7 @@ string is_valid_double_at_start(string expression){
                 //If the expression at index is equal to -, there are multiple minus signs
                 if(expression[index] == '-'){
                     //Returns invalid to indicate there are multiple minues signs in the oduble number
-                    cout<<"Invalid double number: There are multiple negativ signs"<<"\n";
+                    cout<<"Invalid double number: There are multiple negativ esigns"<<"\n";
                     return "invalid";
                 }
             }
@@ -110,7 +110,7 @@ string is_valid_double_at_start(string expression){
         }
     }
     //Returns invalid to indicate the double number is valid if it not of any of the signs
-    cout<<"Invalid double number: Its a invalud number or character"<<"\n";
+    cout<<"Invalid double number: Its a invalid number or character"<<"\n";
     return "invalid";
 }
     
