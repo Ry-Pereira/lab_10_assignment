@@ -8,6 +8,9 @@
 //Creation Date: 4/12/2025
 //Last Modified Date: 4/15/2025
 
+
+//ChatGPT suggested said libariries for functionality and implementation
+
 //Includes the iostream library file to include standard input and ouput for cin and cout
 #include <iostream>
 //Includes the C++ fstream libary for file input and output, open and close functionality
@@ -22,6 +25,8 @@
 using namespace std;
 
 
+
+//ChatgPT suggested error checking and debugging when validating the file number and character
 
 //Function that takes in a double number text file, and tries to open it, and returns true or false if they can open it or not
 bool is_file_valid(string double_number_text_file){
@@ -44,6 +49,8 @@ bool is_a_valid_character(char character){
 }
 
 
+//ChatGPT suggested error checking and debugging in the is valid oduble at start function. Provided to restructure function for better optimization
+
 //Function to check if the string is a valid double value, will return string valid or invalid to indicate if the double number is a valid double number
 string is_valid_double_at_start(string expression){
     //If expression at index 0 is a valid character or a valid number the program continues
@@ -53,6 +60,7 @@ string is_valid_double_at_start(string expression){
             //Checks to see if the element after the expression is a valid number
             if(is_a_valid_number(expression[1]) != 1){
                 //Returns invalid because there has to be a valid numbe after the decimal point
+                cout<<"Invalid double number: There needs to be a real number in front of the decimal point"<<"\n";
                 return "invalid";
             }
             //Loops through the rest of the string to check for mutliple instances of decimal points
@@ -60,6 +68,7 @@ string is_valid_double_at_start(string expression){
                 //If the expression at index equals a dot, there is a decimal point
                 if(expression[index] == '.'){
                     //Returns invalid to indicate there are multiple decimal points which is invalid
+                    cout<<"Invalid double number: There are multiple decimal points"<<"\n";
                     return "invalid";
                 }
             }
@@ -72,6 +81,7 @@ string is_valid_double_at_start(string expression){
             for(int index = 1;index < expression.length();index++){
                 //If the expression at index is equal to +, then there are mutliple plus signs
                 if(expression[index] == '+'){
+                    cout<<"Invalid double number: There are multiple plus signs"<<"\n";
                     //Returns invalid to indcate there are mutliple plus sign values
                     return "invalid";
                 }
@@ -86,6 +96,7 @@ string is_valid_double_at_start(string expression){
                 //If the expression at index is equal to -, there are multiple minus signs
                 if(expression[index] == '-'){
                     //Returns invalid to indicate there are multiple minues signs in the oduble number
+                    cout<<"Invalid double number: There are multiple negativ signs"<<"\n";
                     return "invalid";
                 }
             }
@@ -99,9 +110,12 @@ string is_valid_double_at_start(string expression){
         }
     }
     //Returns invalid to indicate the double number is valid if it not of any of the signs
+    cout<<"Invalid double number: Its a invalud number or character"<<"\n";
     return "invalid";
 }
     
+//ChatGPT suggested error fixing and debugging for function to work
+
 
 //Function for furhter checking the body of the double number to check if its valid or not, will return true or false to indcate that
 bool is_valid_double_body(string expression){
@@ -128,6 +142,7 @@ bool is_valid_double_body(string expression){
             //If the expression at index + 1 is a valid number, to indicate that a real number needs to be front of a decimal
             if(is_a_valid_number(expression[index+1]) != 1){
                  //Is valud is set to  false to indicate that there is no real number in front of the decimal.
+                cout<<"Invalid double number: There is no real number in front of the decimal point"<<"\n";
                 is_valid =  false;
             }
             //If the there is a number in front of the decimal, it valid in the sense
@@ -140,6 +155,7 @@ bool is_valid_double_body(string expression){
         //If the amount of decimal points is greater than 1, then there are multiple decimal points in the double number
         if(amount_of_decimal_points >1){
             //Is valid is set to false, to indicate there are multiple decimal points in the double number body
+            cout<<"Invalid double number: There are multiple decimal points"<<"\n";
             is_valid = false;
         }
     }
@@ -158,6 +174,9 @@ bool is_valid_double_body(string expression){
     cout<<"\n";
 }
 
+
+//ChatGPT suggested error checking and debugging for function to work. Suggested substring method for extracting the string from left and right of express. SUggested find function, to see if there is a string decimal point in the string.
+//Also suggested pow function to set the power of the 10, in order to multiply and or divide by the position of zeros.
 
 //Function to add the specific double number -123.456 to the valid expression passed in as a string
 void add_specific_double_number(string expression){
@@ -510,6 +529,8 @@ void add_specific_double_number(string expression){
         
     }
     
+
+    //ChatGpt suggested fix ed and set precison in order to have the double number as a double number rather than a scientific notation
     //Sum is incremented by 123.456
     sum += -123.456;
     
@@ -536,6 +557,9 @@ void add_parsed_number(vector<string> double_numbers){
     }
 }
 
+
+//Chatgpt suggested error checking and debugging. Helped with revisiing and streamlining the code for better optimization and functionality.SUggested the push back function..
+//Suggested skipping lines if  there are empty lines
 
 //Function to take in a string double number text file as argument, and loads the double numbers from file and returns a vector of double numbers
 vector<string> load_double_numbers_from_file(string double_number_text_file){
