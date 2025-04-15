@@ -129,11 +129,13 @@ bool is_valid_double_body(string expression){
         //If the expression at index is -, its false, it needs to show up at the first index
         if(expression[index] == '-'){
             //Is valud is set to false to indicate that the double number body invalid because a sign is in the body
+            cout<<"Invalid double number: There is a negative sign in the body of the double numbert"<<"\n";
             is_valid =  false;
         }
         //If the expression at index is + its false, it needs to show up at the first index
         if(expression[index] == '+'){
              //Is valud is set to false to indicate that the double number body invalid because a sign is in the body
+             cout<<"Invalid double number: There is a plus sign in the body of the double numbert"<<"\n";
             is_valid =  false;
         }
         //If the expression at index is .
