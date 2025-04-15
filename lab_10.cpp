@@ -510,20 +510,11 @@ void add_specific_double_number(string expression){
         
     }
     
-    //Sum is decremented by 100.000
-    sum -= 100.000;
-    //Sum is decremented by 20.000
-    sum -= 20.000;
-    //Sum is decremented by 3.000
-    sum -= 3.000;
-    //Sum is decremented by .400
-    sum -= .400;
-    //Sum is decremented by .050
-    sum -= .050;
-    //Sum is decremented by .006
-    sum -= .006;
+    //Sum is incremented by 123.456
+    sum += -123.456;
+    
     //Declares and initializes set fixed to the right double substring length + 3, to set the precision for the uput for the resutl printing format
-    int set_fixed = right_double_substring.length();
+    int set_fixed = right_double_substring.length()+3;
     //Prints the result to terminal otput fixes, with set precsion of the result so we wount get a double number at scientific notation
     cout<<expression<<" + "<<-123.456<<" = "<<std::fixed<<setprecision(set_fixed)<<sum<<"\n";
 }
@@ -578,13 +569,13 @@ vector<string> load_double_numbers_from_file(string double_number_text_file){
                 //If i is equal to 1, thene there is only one number in the line, so it can be added, since that is the requirement
                 if(i == 1){
                     //Declares and initializes a string stream object with line passed in
-                    stringstream bb(line);
+                    stringstream ss(line);
                     //Declares string value to store the string value of line
-                    string valuer;
+                    string double_number;
                     //Loopes through each element in the line until there is no more elemenets left and stores it in the value
-                    while(bb >> valuer){
+                    while(ss >> double_number){
                         //double number pushed the value into the back of the vector double numbers
-                        double_numbers.push_back(valuer);
+                        double_numbers.push_back(double_number);
                 }
                 }
                 //If the i is not equal to 1, then there is more than one number occupying the line, so it can't be added
@@ -592,8 +583,6 @@ vector<string> load_double_numbers_from_file(string double_number_text_file){
                     //Prtints to terminal that only one double number can occupy a line, so it won't be added.
                     cout<<"Only one double number can occupy a line"<<"\n";
                 }
-                //Prints newline spacing
-                cout<<"\n";
             }
         }
     } 
@@ -619,6 +608,8 @@ int main(){
     cout << "Enter the name of the double number text file: ";
     //Stores the user input in double number text file
     cin >> double_number_text_file;
+    //Provided newline spacing
+    cout<<"\n";
     //If the file is valud, with the double number text file passed in, then the file is valid, for coninueing the program
     if(is_file_valid(double_number_text_file)){
         //Stores the double numbers in the file to the vector double numbers list, with double number text file argument passed in
@@ -634,7 +625,7 @@ int main(){
     }
 
     //Prints to terminal that the program has ended and goodbye message to user
-    cout<<"Goodbye"<<"\n";
+    cout<<"\n"<<"Goodbye"<<"\n";
     cout<<"Program Has Ended"<<"\n";
 
     
