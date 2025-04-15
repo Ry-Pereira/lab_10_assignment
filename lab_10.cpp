@@ -6,7 +6,7 @@
 //Other Sources:Github Copilot and ChatGPT 
 //Author: Ryan Antony Pereira
 //Creation Date: 4/12/2025
-//Last Modified Date: 4/12/2025
+//Last Modified Date: 4/15/2025
 
 //Includes the iostream library file to include standard input and ouput for cin and cout
 #include <iostream>
@@ -164,8 +164,8 @@ void add_specific_double_number(string expression){
     //Declares double type sum to 0.0
     double sum = 0.0;
     //Initialzzies the string left and right to hold the left and right part of the expression that is split by the decimal point
-    string left;
-    string right;
+    string left_double_substring_double_substring;
+    string right_double_substring;
 
     //Declares the integer point position to hold the integer position of the decimal point in the double number
     int decimal_point_position;
@@ -191,235 +191,357 @@ void add_specific_double_number(string expression){
     }
     
     
-    
+    //For in loop to iterate through each element in the expression
     for(int index = 0;index<expression.length();index++){
+        //If the expression at index is a decimal point
         if(expression[index] == '.'){
-            is_dot_present = true;
+            //Is decimal point present is set to true to indcate there is a decimal point in the double number
+            is_decimal_point_present = true;
         }
     }
+    //If the is dot present is true
     if(is_dot_present == true){
-        dot1 = expression.find('.');
-        left = expression.substr(0,dot1);
-        right = expression.substr(dot1,expression.length());
+        //Decimal point position is set to the found position of the decimal point in the double number
+        decimal_point_position = expression.find('.');
+        //Left substring is set to the substring before the decimal point position
+        left_double_substring = expression.substr(0,decimal_point_position);
+        //Right substring is set to the substring before the decimal point position
+        right_double_substring = expression.substr(decimal_point_position,expression.length());
     }
+    //If the dot is not present, there is only a present left string
     else{
-    
-    left = expression;
-    right = "00";
+    //Left substring set to the expression
+    left_double_substring = expression;
+    //Right substring is set to the 00
+    right_double_substring = "00";
     }
     
-    
-    for(int i = 0; i < left.length(); i++){
-        switch(left[i]){
+    //For in loop through each elment in the left oduble substring
+    for(int i = 0; i < left_double_substring.length(); i++){
+        //Does a switch case of the left double substring at index
+        switch(left_double_substring[i]){
+            //If the case is string 0
             case '0':
-            if(type == "positive"){
-                sum+= 0 * pow(10,left.length() - i-1);
+            //If the symbol type is positive, its a positive double number
+            if(symbol_type == "positive"){
+                //Sum increments the number integer of the case to the multiplication of 10 to the power of the left double sbstring length  minus the index and 1
+                sum+= 0 * pow(10,left_double_substring.length() - i-1);
             }
+            //If not the double number is negative
             else{
-                sum-= 0 * pow(10,left.length() - i-1);
+                //Sum decrements the number integer of the case to the multiplication of 10 to the power of the left double sbstring length  minus the index and 1
+                sum-= 0 * pow(10,left_double_substring.length() - i-1);
             }
+            //Breaks out of switch case
             break;
+            //If the case is string 1
             case '1':
-            if(type == "positive"){
-                sum+= 1 * pow(10,left.length() - i-1);
+            //If the symbol type is positive, its a positive double number
+            if(symbol_type == "positive"){
+                //Sum increments the number integer of the case to the multiplication of 10 to the power of the left double sbstring length  minus the index and 1
+                sum+= 1 * pow(10,left_double_substring.length() - i-1);
             }
+            //If not the double number is negative
             else{
-                sum-= 1 * pow(10,left.length() - i-1);
+                //Sum decrements the number integer of the case to the multiplication of 10 to the power of the left double sbstring length  minus the index and 1
+                sum-= 1 * pow(10,left_double_substring.length() - i-1);
             }
+            //Breaks out of switch case
             break;
+            //If the case is string 2
             case '2':
-            if(type == "positive"){
-                sum+= 2 * pow(10,left.length() - i-1);
+            //If the symbol type is positive, its a positive double number
+            if(symbol_type == "positive"){
+                //Sum increments the number integer of the case to the multiplication of 10 to the power of the left double sbstring length  minus the index and 1
+                sum+= 2 * pow(10,left_double_substring.length() - i-1);
             }
+            //If not the double number is negative
             else{
-                sum-= 2 * pow(10,left.length() - i-1);
+                //Sum decrements the number integer of the case to the multiplication of 10 to the power of the left double sbstring length  minus the index and 1
+                sum-= 2 * pow(10,left_double_substring.length() - i-1);
             }
+            //Breaks out of switch case
             break;
+            //If the case is string 3
             case '3':
-
-            if(type == "positive"){
-                sum+= 3 * pow(10,left.length() - i-1);
+            //If the symbol type is positive, its a positive double number
+            if(symbol_type == "positive"){
+                //Sum increments the number integer of the case to the multiplication of 10 to the power of the left double sbstring length  minus the index and 1
+                sum+= 3 * pow(10,left_double_substring.length() - i-1);
             }
+            //If not the double number is negative
             else{
-                sum-= 3 * pow(10,left.length() - i-1);
+                //Sum decrements the number integer of the case to the multiplication of 10 to the power of the left double sbstring length  minus the index and 1
+                sum-= 3 * pow(10,left_double_substring.length() - i-1);
             }
+            //Breaks out of switch case
             break;
+            //If the case is string 4
             case '4':
-    
-            if(type == "positive"){
-                sum+= 4 * pow(10,left.length() - i-1);
+            //If the symbol type is positive, its a positive double number
+            if(symbol_type == "positive"){
+                //Sum increments the number integer of the case to the multiplication of 10 to the power of the left double sbstring length  minus the index and 1
+                sum+= 4 * pow(10,left_double_substring.length() - i-1);
             }
+            //If not the double number is negative
             else{
-                sum-= 4 * pow(10,left.length() - i-1);
+                //Sum decrements the number integer of the case to the multiplication of 10 to the power of the left double sbstring length  minus the index and 1
+                sum-= 4 * pow(10,left_double_substring.length() - i-1);
             }
+            //Breaks out of switch case
             break;
+            //If the case is string 5
             case '5':
-     
-            if(type == "positive"){
-                sum+= 5 * pow(10,left.length() - i-1);
+            //If the symbol type is positive, its a positive double number
+            if(symbol_type == "positive"){
+                //Sum increments the number integer of the case to the multiplication of 10 to the power of the left double sbstring length  minus the index and 1
+                sum+= 5 * pow(10,left_double_substring.length() - i-1);
             }
+            //If not the double number is negative
             else{
-                sum-= 5 * pow(10,left.length() - i-1);
+                //Sum decrements the number integer of the case to the multiplication of 10 to the power of the left double sbstring length  minus the index and 1
+                sum-= 5 * pow(10,left_double_substring.length() - i-1);
             }
+            //Breaks out of switch case
             break;
+            //If the case is string 6
             case '6':
- 
-            if(type == "positive"){
-                sum+= 6 * pow(10,left.length() - i-1);
+            //If the symbol type is positive, its a positive double number
+            if(symbol_type == "positive"){
+                //Sum increments the number integer of the case to the multiplication of 10 to the power of the left double sbstring length  minus the index and 1
+                sum+= 6 * pow(10,left_double_substring.length() - i-1);
             }
+            //If not the double number is negative
             else{
-                sum-= 6 * pow(10,left.length() - i-1);
+                //Sum decrements the number integer of the case to the multiplication of 10 to the power of the left double sbstring length  minus the index and 1
+                sum-= 6 * pow(10,left_double_substring.length() - i-1);
             }
+            //Breaks out of switch case
             break;
+            //If the case is string 7
             case '7':
- 
-            if(type == "positive"){
-                sum+= 7 * pow(10,left.length() - i-1);
+            //If the symbol type is positive, its a positive double number
+            if(symbol_type == "positive"){
+                //Sum increments the number integer of the case to the multiplication of 10 to the power of the left double sbstring length  minus the index and 1
+                sum+= 7 * pow(10,left_double_substring.length() - i-1);
             }
+            //If not the double number is negative
             else{
-                sum-= 7 * pow(10,left.length() - i-1);
+                //Sum decrements the number integer of the case to the multiplication of 10 to the power of the left double sbstring length  minus the index and 1
+                sum-= 7 * pow(10,left_double_substring.length() - i-1);
             }
+            //Breaks out of switch case
             break;
+            //If the case is string 8
             case '8':
-   
-            if(type == "positive"){
-                sum+= 8 * pow(10,left.length() - i-1);
+            //If the symbol type is positive, its a positive double number
+            if(symbol_type == "positive"){
+                //Sum increments the number integer of the case to the multiplication of 10 to the power of the left double sbstring length  minus the index and 1
+                sum+= 8 * pow(10,left_double_substring.length() - i-1);
             }
+            //If not the double number is negative
             else{
-                sum-= 8 * pow(10,left.length() - i-1);
+                //Sum decrements the number integer of the case to the multiplication of 10 to the power of the left double sbstring length  minus the index and 1
+                sum-= 8 * pow(10,left_double_substring.length() - i-1);
             }
+            //Breaks out of switch case
             break;
+            //If the case is string 9
             case '9':
-    
-            if(type == "positive"){
-                sum+= 9 * pow(10,left.length() - i-1);
+            //If the symbol type is positive, its a positive double number
+            if(symbol_type == "positive"){
+                //Sum increments the number integer of the case to the multiplication of 10 to the power of the left double sbstring length  minus the index and 1
+                sum+= 9 * pow(10,left_double_substring.length() - i-1);
             }
+            //If not the double number is negative
             else{
-                sum-= 9 * pow(10,left.length() - i-1);
+                //Sum decrements the number integer of the case to the multiplication of 10 to the power of the left double sbstring length  minus the index and 1
+                sum-= 9 * pow(10,left_double_substring.length() - i-1);
             }
+            //Breaks out of switch case
             break;
         }
         
     }
 
-    for(int i = 0; i < right.length(); i++){
-        switch(right[i]){
+    for(int i = 0; i < right_double_substring.length(); i++){
+        switch(right_double_substring[i]){
+            //If the case is string 1
             case '0':
-            if(type == "positive"){
+            //If the symbol type is positive, its a positive double number
+            if(symbol_type == "positive"){
+                //Sum increments the number integer of the case to the division of 10 to the power of value i
                 sum+= 0 / pow(10,i);
             }
+            //If not the double number is negative
             else{
+                //Sum decrements the number integer of the case to the division of 10 to the power of value i
                 sum-= 0 / pow(10,i);
             }
+            //Breaks out of switch case
             break;
+            //If the case is string 1
             case '1':
-             if(type == "positive"){
+            //If the symbol type is positive, its a positive double number
+             if(symbol_type == "positive"){
+                //Sum increments the number integer of the case to the division of 10 to the power of value i
                 sum+= 1 / pow(10,i);
             }
+            //If not the double number is negative
             else{
+                //Sum decrements the number integer of the case to the division of 10 to the power of value i
                 sum-= 1 / pow(10,i);
             }
+            //Breaks out of switch case
             break;
+            //If the case is string 2
             case '2':
-        
-            if(type == "positive"){
+            //If the symbol type is positive, its a positive double number
+            if(symbol_type == "positive"){
+                //Sum increments the number integer of the case to the division of 10 to the power of value i
                 sum+= 2 / pow(10,i);
             }
+            //If not the double number is negative
             else{
+                //Sum decrements the number integer of the case to the division of 10 to the power of value i
                 sum-= 2 / pow(10,i);
             }
+            //Breaks out of switch case
             break;
+            //If the case is string 3
             case '3':
-
-            if(type == "positive"){
+            //If the symbol type is positive, its a positive double number
+            if(symbol_type == "positive"){
+                //Sum increments the number integer of the case to the division of 10 to the power of value i
                 sum+= 3 / pow(10,i);
             }
+            //If not the double number is negative
             else{
+                //Sum decrements the number integer of the case to the division of 10 to the power of value i
                 sum-= 3 / pow(10,i);
             }
+            //Breaks out of switch case
             break;
+            //If the case is string 4
             case '4':
-     
-            if(type == "positive"){
+            //If the symbol type is positive, its a positive double number
+            if(symbol_type == "positive"){
+                //Sum increments the number integer of the case to the division of 10 to the power of value i
                 sum+= 4 / pow(10,i);
             }
+            //If not the double number is negative
             else{
+                //Sum decrements the number integer of the case to the division of 10 to the power of value i
                 sum-= 4 / pow(10,i);
             }
+            //Breaks out of switch case
             break;
+            //If the case is string 5
             case '5':
-            
-            if(type == "positive"){
+            //If the symbol type is positive, its a positive double number
+            if(symbol_type == "positive"){
+                //Sum increments the number integer of the case to the division of 10 to the power of value i
                 sum+= 5 / pow(10,i);
             }
+            //If not the double number is negative
             else{
+                //Sum decrements the number integer of the case to the division of 10 to the power of value i
                 sum-= 5 / pow(10,i);
             }
+            //Breaks out of switch case
             break;
+            //If the case is string 6
             case '6':
-   
-            
-            if(type == "positive"){
+            //If the symbol type is positive, its a positive double number
+            if(symbol_type == "positive"){
+                //Sum increments the number integer of the case to the division of 10 to the power of value i
                 sum+= 6 / pow(10,i);
             }
+            //If not the double number is negative
             else{
+                //Sum decrements the number integer of the case to the division of 10 to the power of value i
                 sum-= 6 / pow(10,i);
             }
+            //Breaks out of switch case
             break;
+            //If the case is string 7
             case '7':
-   
-            if(type == "positive"){
+            //If the symbol type is positive, its a positive double number
+            if(symbol_type == "positive"){
+                //Sum increments the number integer of the case to the division of 10 to the power of value i
                 sum+= 7 / pow(10,i);
             }
+            //If not the double number is negative
             else{
+                //Sum decrements the number integer of the case to the division of 10 to the power of value i
                 sum-= 7 / pow(10,i);
             }
+            //Breaks out of switch case
             break;
+            //If the case is string 8
             case '8':
-       
-            if(type == "positive"){
+            //If the symbol type is positive, its a positive double number
+            if(symbol_type == "positive"){
+                //Sum increments the number integer of the case to the division of 10 to the power of value i
                 sum+= 8 / pow(10,i);
             }
+            //If not the double number is negative
             else{
+                //Sum decrements the number integer of the case to the division of 10 to the power of value i
                 sum-= 8 / pow(10,i);
             }
+            //Breaks out of switch case
             break;
+            //If the case is string 9
             case '9':
- 
-            if(type == "positive"){
+            //If the symbol type is positive, its a positive double number
+            if(symbol_type == "positive"){
+                //Sum increments the number integer of the case to the division of 10 to the power of value i
                 sum+= 9 / pow(10,i);
             }
+            //If not the double number is negative
             else{
+                //Sum decrements the number integer of the case to the division of 10 to the power of value i
                 sum-= 9 / pow(10,i);
             }
+            //Breaks out of switch case
             break;
         }
         
     }
     
+    //Sum is decremented by 100.000
     sum -= 100.000;
+    //Sum is decremented by 20.000
     sum -= 20.000;
+    //Sum is decremented by 3.000
     sum -= 3.000;
+    //Sum is decremented by .400
     sum -= .400;
+    //Sum is decremented by .050
     sum -= .050;
+    //Sum is decremented by .006
     sum -= .006;
-    int set_fixed = right.length() + 3;
+    //Declares and initializes set fixed to the right double substring length + 3, to set the precision for the uput for the resutl printing format
+    int set_fixed = right_double_substring.length() + 3;
+    //Prints the result to terminal otput fixes, with set precsion of the result so we wount get a double number at scientific notation
     cout<<expression<<'+'<<-123.456<<'='<<"Sum: "<<std::fixed<<setprecision(set_fixed)<<sum<<"\n";
 }
 
-
+//Function for taking a in a vector string of doubel numbers,sees if there valid, and prints the ouput of them added with a specific double number
 void add_parsed_number(vector<string> double_numbers){
-    string sum;
+    //Loops throguh each double number number in the vector string
     for(int index =0;index<double_numbers.size();index++){
-        string valid_double = is_valid_double(double_numbers[index]);
+        //Declares and initializes string valid double to the output result of the isvalid double at start with double number at index
+        string valid_double = is_valid_double_at_start(double_numbers[index]);
+        //If valid double is not invalid
         if(valid_double != "invalid"){
-            if(pot(double_numbers[index]) == 1){
-                
-                add_it_up(double_numbers[index]);
+            //If the is valid double body with double number at index passed is true, it can now finally be added with the specific double number
+            if(is_valid_double_body(double_numbers[index]) == 1){
+                //Executes the add specific double number with double number with index passed in as argument
+                add_specific_double_number(double_numbers[index]);
             }
         }
-        
-    
     }
 }
 
