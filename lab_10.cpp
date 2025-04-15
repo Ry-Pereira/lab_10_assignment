@@ -44,98 +44,150 @@ bool is_a_valid_character(char character){
 }
 
 
-
-string is_valid_double(string expression){
-
-   
-
+//Function to check if the string is a valid double value, will return string valid or invalid to indicate if the double number is a valid double number
+string is_valid_double_at_start(string expression){
+    //If expression at index 0 is a valid character or a valid number the program continues
     if(is_a_valid_character(expression[0]) == 1 ||is_a_valid_number(expression[0]) == 1){
+        //If the expression at index 0 is equal to 0
         if(expression[0] == '.'){
+            //Checks to see if the element after the expression is a valid number
             if(is_a_valid_number(expression[1]) != 1){
+                //Returns invalid because there has to be a valid numbe after the decimal point
                 return "invalid";
             }
+            //Loops through the rest of the string to check for mutliple instances of decimal points
             for(int index = 1;index < expression.length();index++){
+                //If the expression at index equals a dot, there is a decimal point
                 if(expression[index] == '.'){
+                    //Returns invalid to indicate there are multiple decimal points which is invalid
                     return "invalid";
                 }
             }
-            return "decimal";
+            //If doesn't meet these conditions then it is a valid double number
+            return "valid";
         }
+        //If expression at index 0 is equal to +
         if(expression[0] == '+'){
+            //Loops through the rest of the expression
             for(int index = 1;index < expression.length();index++){
+                //If the expression at index is equal to +, then there are mutliple plus signs
                 if(expression[index] == '+'){
+                    //Returns invalid to indcate there are mutliple plus sign values
                     return "invalid";
                 }
             }
-            return "positive";
+            //Returns valid to indicate it passed all checks, is a valid oduble number at the start
+            return "valid";
         }
+        //If the expression at index 0 is equal to -
         if(expression[0] == '-'){
+        //Loops through the rest of the expression
          for(int index = 1;index < expression.length();index++){
-                if(expression[index] == '+'){
+                //If the expression at index is equal to -, there are multiple minus signs
+                if(expression[index] == '-'){
+                    //Returns invalid to indicate there are multiple minues signs in the oduble number
                     return "invalid";
                 }
             }
-            return "negative";
+            //Returns valid to indicate it passed all the checks
+            return "valid";
         }
+        //If the expression at index 0, is not any of these sign, its just a number, its valid
         else{
-            return "positive";
+            //Returns valid to indicate its a vlaid number
+            return "valid";
         }
     }
+    //Returns invalid to indicate the double number is valid if it not of any of the signs
     return "invalid";
 }
     
-bool pot(string expression){
+
+//Function for furhter checking the body of the double number to check if its valid or not, will return true or false to indcate that
+bool is_valid_double_body(string expression){
+    //Declares and initializes is valis to true
     bool is_valid = true;
-    int amount_of_points = 0;
+    //Declares amount of point to 0 to indcate the number of decimal points found in the double number body
+    int amount_of_decimal_points = 0;
     
-    
+    //Loops through the expression at each index
     for(int index = 1;index < expression.length(); index++){
+        //If the expression at index is -, its false, it needs to show up at the first index
         if(expression[index] == '-'){
+            //Is valud is set to false to indicate that the double number body invalid because a sign is in the body
             is_valid =  false;
         }
+        //If the expression at index is + its false, it needs to show up at the first index
         if(expression[index] == '+'){
+             //Is valud is set to false to indicate that the double number body invalid because a sign is in the body
             is_valid =  false;
         }
+        //If the expression at index is .
         if(expression[index] == '.'){
-          
+            
+            //If the expression at index + 1 is a valid number, to indicate that a real number needs to be front of a decimal
             if(is_a_valid_number(expression[index+1]) != 1){
+                 //Is valud is set to  false to indicate that there is no real number in front of the decimal.
                 is_valid =  false;
             }
+            //If the there is a number in front of the decimal, it valid in the sense
             else{
-                amount_of_points++;
+                //Increments amount of decimal points
+                amount_of_decimal_points++;
             }
             
         }
-        if(amount_of_points >1){
+        //If the amount of decimal points is greater than 1, then there are multiple decimal points in the double number
+        if(amount_of_decimal_points >1){
+            //Is valid is set to false, to indicate there are multiple decimal points in the double number body
             is_valid = false;
         }
     }
     
+    //If the is valis is true, the double number obdy is valid
     if(is_valid == true){
+        //Returns true to indcate that is a true double number
         return true;
     }
-    
+    //If is valid is false, the double number body is not valid
+    else{
+        //Returns false to indicate its a invalid double number
+        return false;
+    }
+    //Provides newline spacing
     cout<<"\n";
 }
 
 
-
-double add_it_up(string expression){
+//Function to add the specific double number -123.456 to the valid expression passed in as a string
+void add_specific_double_number(string expression){
+    //Declares double type sum to 0.0
     double sum = 0.0;
+    //Initialzzies the string left and right to hold the left and right part of the expression that is split by the decimal point
     string left;
     string right;
-    int dot1;
-    bool is_dot_present = false;
-    string type;
+
+    //Declares the integer point position to hold the integer position of the decimal point in the double number
+    int decimal_point_position;
+    //Declares and initializes is decimal point present to false to indicate if the decimal point is present in the odube number
+    bool is_decimal_point_present = false;
+    //Declares string symbol type to hold the symbol type of a number
+    string symbol_type;
     
+    //If the expression at index 0 is +, the number is positive
     if(expression[0] == '+'){
-        type = "positive";
+        //Symbol type is set to positive
+        symbol_type = "positive";
     }
+    //If the expression at index 0 is -, the number is negative
     else if(expression[0] == '-'){
-        type = "negative";
+        //Symbol type is set to negative
+        symbol_type = "negative";
     }
+    //else the number is positive regardless of symbol in fron of it
     else{
-        type = "positive";
+        //Symbol type is set to positive
+        symbol_type = "positive";
     }
     
     
@@ -353,10 +405,6 @@ double add_it_up(string expression){
     sum -= .006;
     int set_fixed = right.length() + 3;
     cout<<expression<<'+'<<-123.456<<'='<<"Sum: "<<std::fixed<<setprecision(set_fixed)<<sum<<"\n";
-    
-    return 0.0;
-    
-    
 }
 
 
