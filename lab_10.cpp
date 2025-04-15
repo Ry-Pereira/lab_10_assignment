@@ -119,25 +119,28 @@ bool pot(string expression){
 
 double add_it_up(string expression){
     double sum = 0.0;
-  
+    string left;
+    string right;
+    int dot1;
+    
     bool is_dot_present = false;
     for(int index = 0;index<expression.length();index++){
         if(expression[index] == '.'){
             is_dot_present = true;
         }
     }
-    if(is_dot_present == false){
-    
-        return 0.0;
+    if(is_dot_present == true){
+        dot1 = expression.find('.');
+        left = expression.substr(0,dot1);
+        right = expression.substr(dot1,expression.length());
     }
-    int dot1 = expression.find('.');
-    string left = expression.substr(0,dot1);
-    string right = expression.substr(dot1,expression.length());
-    //cout<<"Left"<<left<<left.length()<<"\n";
-    //cout<<"Rightt"<<right<<"\n";
+    else{
     
-    char sign = left[0];
-    int bet = 3;
+    left = expression;
+    right = "00";
+    }
+    
+    
     for(int i = 0; i < left.length(); i++){
         switch(left[i]){
             case '0':
@@ -147,35 +150,35 @@ double add_it_up(string expression){
             sum+= 1 * pow(10,left.length() - i-1);
             break;
             case '2':
-            cout<< 2<<"\n";
+         
             sum+= 2 * pow(10,left.length() - i-1);
             break;
             case '3':
-            cout<< 3<<"\n";
+
             sum+= 3 * pow(10,left.length() - i-1);
             break;
             case '4':
-            cout<< 4<<"\n";
+    
             sum+= 4 * pow(10,left.length() - i-1);
             break;
             case '5':
-            cout<< 5<<"\n";
+     
             sum+= 5 * pow(10,left.length() - i-1);
             break;
             case '6':
-            cout<< 6<<"\n";
+ 
             sum+= 6 * pow(10,left.length() - i-1);
             break;
             case '7':
-            cout<< 7<<"\n";
+ 
             sum+= 7 * pow(10,left.length() - i-1);
             break;
             case '8':
-            cout<< 8<<"\n";
+   
             sum+= 8 * pow(10,left.length() - i-1);
             break;
             case '9':
-            cout<< 9<<"\n";
+    
             sum+= 9 * pow(10,left.length() - i-1);
             break;
         }
@@ -191,35 +194,35 @@ double add_it_up(string expression){
             sum+= 1 / pow(10,i);
             break;
             case '2':
-            cout<< 2<<"\n";
+        
             sum+= 2/ pow(10,i);
             break;
             case '3':
-            cout<< 3<<"\n";
+
             sum+= 3 / pow(10,i);
             break;
             case '4':
-            cout<< 4<<"\n";
+     
             sum+= 4 / pow(10,i);
             break;
             case '5':
-            cout<< 5<<"\n";
+
             sum+= 5 / pow(10,i);
             break;
             case '6':
-            cout<< 6<<"\n";
+   
             sum+= 6 / pow(10,i);
             break;
             case '7':
-            cout<< 7<<"\n";
+   
             sum+= 7 / pow(10,i);
             break;
             case '8':
-            cout<< 8<<"\n";
+       
             sum+= 8 / pow(10,i);
             break;
             case '9':
-            cout<< 9<<"\n";
+ 
             sum+= 9 / pow(10,i);
             break;
         }
